@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +14,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -50,32 +55,75 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingCard() {
-    LazyColumn(
+    var showDialog by remember { mutableStateOf(true) }
+
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, Color.Gray)
-            .padding(8.dp)
-    ) {
-        items(5) { index ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .padding(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = "LazyColum",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF000000),
-                    fontFamily = FontFamily.Monospace
-                )
-            }
+            .padding(25.dp)
+            .border(2.dp, Color.Black)
+            .padding(10.dp),
 
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ){
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color.Gray)
+                .padding(8.dp)
+        ) {
+            items(5) { index ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .padding(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Text(
+                        text = "LazyColum",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF000000),
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+
+            }
         }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color.Gray)
+                .padding(8.dp)
+        ) {
+            items(3) { index ->
+                Card(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .width(85.dp)
+                        .height(35.dp),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Lazy Row",
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF000000),
+                            fontFamily = FontFamily.SansSerif,
+                        )
+                    }
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(16.dp))
     }
-    Spacer(modifier = Modifier.height(16.dp))
 }
 
 @Preview(showBackground = true)
