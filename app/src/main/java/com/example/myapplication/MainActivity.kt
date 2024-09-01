@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -77,29 +78,32 @@ fun GreetingCard() {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .border(1.dp, Color.Gray)
-                .padding(8.dp)
+                .border(2.dp, Color.Black)
+                .padding(16.dp)
+                .background(Color(0xFFF0F0F0))
         ) {
-            items(5) { index ->
+            items(4) { index ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
-                        .padding(8.dp),
+                        .padding(vertical = 12.dp)
+                        .background(Color(0xFFE0E0E0), RoundedCornerShape(8.dp))
+                        .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                        .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     Text(
-                        text = "LazyColum",
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF000000),
-                        fontFamily = FontFamily.Monospace
+                        text = "Elemento $index",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF333333),
+                        fontFamily = FontFamily.SansSerif, 
+                        modifier = Modifier.padding(start = 8.dp)
                     )
                 }
-
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         LazyRow(
             modifier = Modifier
