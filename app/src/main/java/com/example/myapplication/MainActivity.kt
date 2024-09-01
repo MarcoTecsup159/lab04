@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -37,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -131,8 +133,21 @@ fun GreetingCard() {
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        FloatingActionButton(onClick = { /* Acción */ }) {
-            Icon(Icons.Default.Add, contentDescription = "Agregar")
+        FloatingActionButton(
+            onClick = { /* Acción */ },
+            containerColor = Color(0xFF6200EE),
+            contentColor = Color.White,
+            modifier = Modifier
+                .size(64.dp)
+                .shadow(8.dp, shape = CircleShape),
+            shape = CircleShape
+        ) {
+            Icon(
+                Icons.Default.Add,
+                contentDescription = "Agregar",
+                tint = Color.White,
+                modifier = Modifier.size(32.dp)
+            )
         }
         Spacer(modifier = Modifier.height(16.dp))
     }
